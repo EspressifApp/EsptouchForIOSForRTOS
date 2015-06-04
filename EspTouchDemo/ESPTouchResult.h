@@ -10,12 +10,25 @@
 
 @interface ESPTouchResult : NSObject
 
+// it is used to check whether the esptouch task is executed suc
 @property (nonatomic,assign) BOOL isSuc;
 
+// it is used to store the device's bssid
 @property (nonatomic,strong) NSString * bssid;
 
+// it is used to check whether the esptouch task is cancelled by user
 @property (atomic,assign) BOOL isCancelled;
 
-- (id) initWithIsSuc: (BOOL) isSuc andBssid: (NSString *) bssid;
+// it is used to store the device's ip address
+@property (atomic) NSData * ipAddrData;
+
+/**
+ * Constructor of EsptouchResult
+ *
+ * @param isSuc whether the esptouch task is executed suc
+ * @param bssid the device's bssid
+ * @param ipAddrData the device's ip address
+ */
+- (id) initWithIsSuc: (BOOL) isSuc andBssid: (NSString *) bssid andInetAddrData: (NSData *) ipAddrData;
 
 @end

@@ -9,6 +9,7 @@
 #import "ESPViewController.h"
 #import "ESPTouchTask.h"
 #import "ESPTouchResult.h"
+#import "ESP_NetUtil.h"
 
 #import <SystemConfiguration/CaptiveNetwork.h>
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *_spinner;
 @property (weak, nonatomic) IBOutlet UITextField *_pwdTextView;
 @property (weak, nonatomic) IBOutlet UIButton *_confirmCancelBtn;
+@property (weak, nonatomic) IBOutlet UISwitch *_isSsidHiddenSwitch;
 
 // to cancel ESPTouchTask when
 @property (atomic, strong) ESPTouchTask *_esptouchTask;
@@ -40,10 +42,10 @@
     {
         [self._spinner startAnimating];
         [self enableCancelBtn];
-        NSLog(@"do confirm action...");
+        NSLog(@"ESPViewController do confirm action...");
         dispatch_queue_t  queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{
-            NSLog(@"do the execute work...");
+            NSLog(@"ESPViewController do the execute work...");
             // execute the task
             ESPTouchResult *esptouchResult = [self executeForResult];
             // show the result to the user in UI Main Thread
@@ -63,7 +65,7 @@
     {
         [self._spinner stopAnimating];
         [self enableConfirmBtn];
-        NSLog(@"do cancel action...");
+        NSLog(@"ESPViewController do cancel action...");
         [self cancel];
     }
 }
@@ -78,27 +80,18 @@
     }
 }
 
-#pragma mark - the example of how to use execute
-
-- (BOOL) execute
-{
-    NSString *apSsid = self.ssidLabel.text;
-    NSString *apPwd = self._pwdTextView.text;
-    self._esptouchTask = [[ESPTouchTask alloc]initWithApSsid:apSsid andApPwd:apPwd];
-    BOOL result = [self._esptouchTask execute];
-    NSLog(@"execute() result is: %@",result?@"YES":@"NO");
-    return result;
-}
-
 #pragma mark - the example of how to use executeForResult
 
 - (ESPTouchResult *) executeForResult
 {
     NSString *apSsid = self.ssidLabel.text;
     NSString *apPwd = self._pwdTextView.text;
-    self._esptouchTask = [[ESPTouchTask alloc]initWithApSsid:apSsid andApPwd:apPwd];
+    NSString *apBssid = self.bssid;
+    BOOL isSsidHidden = [self._isSsidHiddenSwitch isOn];
+    self._esptouchTask =
+    [[ESPTouchTask alloc]initWithApSsid:apSsid andApBssid:apBssid andApPwd:apPwd andIsSsidHiden:isSsidHidden];
     ESPTouchResult * esptouchResult = [self._esptouchTask executeForResult];
-    NSLog(@"executeForResult() result is: %@",esptouchResult);
+    NSLog(@"ESPViewController executeForResult() result is: %@",esptouchResult);
     return esptouchResult;
 }
 
