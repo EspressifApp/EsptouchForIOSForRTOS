@@ -88,9 +88,7 @@
 		077B60321AC036C4000AC046 /* EspTouchDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EspTouchDemoTests-Info.plist"; sourceTree = "<group>"; };
 		077B60341AC036C4000AC046 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		077B60361AC036C4000AC046 /* EspTouchDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EspTouchDemoTests.m; sourceTree = "<group>"; };
-		07A433711ADCF33A001F99B0 /* ESPTouchTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPTouchTask.h; sourceTree = "<group>"; };
 		07A433721ADCF33A001F99B0 /* ESPTouchTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESPTouchTask.m; sourceTree = "<group>"; };
-		07A433741ADCF35A001F99B0 /* ESPTouchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPTouchResult.h; sourceTree = "<group>"; };
 		07A433751ADCF35A001F99B0 /* ESPTouchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESPTouchResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +164,6 @@
 		077B60111AC036C3000AC046 /* EspTouchDemo */ = {
 			isa = PBXGroup;
 			children = (
-				07A4336A1ADCF2CD001F99B0 /* esptouch */,
 				0703C6EE1AD653A9009A3841 /* protocol */,
 				077B60431AC038A1000AC046 /* util */,
 				077B60421AC03893000AC046 /* udp */,
@@ -246,15 +243,6 @@
 				070A3A731B207006005BEA87 /* ESP_NetUtil.m */,
 			);
 			name = util;
-			sourceTree = "<group>";
-		};
-		07A4336A1ADCF2CD001F99B0 /* esptouch */ = {
-			isa = PBXGroup;
-			children = (
-				07A433711ADCF33A001F99B0 /* ESPTouchTask.h */,
-				07A433741ADCF35A001F99B0 /* ESPTouchResult.h */,
-			);
-			name = esptouch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
